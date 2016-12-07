@@ -9,7 +9,7 @@ The easiest way to install this integration is to use KPM.
 To add a configuration, execute each of the following commands (replace each of the angle bracketed strings with the respective information):
 ```sh
 /kpm config telegram username "<telegramToken>"
-/kpm config facebook commandPrefix "/"
+/kpm config telegram commandPrefix "/"
 ```
 
 #### Running
