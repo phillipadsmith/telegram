@@ -1,6 +1,6 @@
 var bot = null,
     api = null,
-    TelegramBot = require('node-telegram-bot-api');
+    TelegramBot = require('tgfancy');
 
 var sendMessage = function(message, thread, opts) {
     bot.sendMessage(thread, message, opts);
@@ -13,7 +13,11 @@ exports.getApi = function() {
 exports.start = function(callback) {
     var token = exports.config.token;
     bot = new TelegramBot(token, {
-        polling: true
+        // all options to 'tgfancy' MUST be placed under the
+        // 'tgfancy' key, as shown below
+        tgfancy: {
+            polling: "true",
+        },
     });
 
     api = shim.createIntegration({
@@ -23,21 +27,19 @@ exports.start = function(callback) {
 
     bot.on('message', function(msg) {
         if (bot._polling.offset < exports.config.offset) {
-            // Fixes issue where a duplicate message is received after restart
+        // Fixes issue where a duplicate message is received after restart
             return;
         }
+        // Increments & persist the offset value
+        var offset = bot._polling.offset + 1;
+        exports.config.offset = offset;
+
         var event = shim.createEvent(msg.chat.id, msg.from.id, msg.from.username, msg.text);
         callback(api, event);
     });
 };
 
 exports.stop = function() {
+    console.log('In stop: ' + exports.config.offset);
     console.debug('Telegram -> start shutdown');
-    // Ensure that there's no endless loop because of an incorrect offset value
-    exports.config.offset = bot._polling.offset + 1;
-    // No stopPolling() method, so we set the abort to true & that seems to work
-    if (bot._polling) {
-        bot._polling.abort = true;
-    }
-    this._polling = null;
 };
