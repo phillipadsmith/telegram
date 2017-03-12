@@ -1,0 +1,22 @@
+{
+  "name": "concierge-telegram-phillipadsmith",
+  "version": "1.0.0",
+  "description": "The easiest way to install this integration is to use KPM. ```sh /kpm install telegram ```",
+  "main": "telegram.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phillipadsmith/telegram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phillipadsmith/telegram/issues"
+  },
+  "homepage": "https://github.com/phillipadsmith/telegram#readme",
+  "dependencies": {
+    "tgfancy": "^0.9.0"
+  }
+}
