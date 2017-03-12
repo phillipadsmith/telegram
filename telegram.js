@@ -30,16 +30,10 @@ exports.load = function() {
 };
 
 
-exports.start = function(callback) {
-    bot.on('message', function(msg) {
-        var event = shim.createEvent(msg.chat.id, msg.from.id, msg.from.username, msg.text);
-        callback(api, event);
-    });
+exports.start = function() {
 };
 
-
 exports.unload = function() {
-    console.debug('Telegram -> module unloaded');
 };
 
 exports.stop = function() {
