@@ -15,6 +15,8 @@ exports.load = function() {
 
 
 exports.start = function() {
+    bot = new TelegramBot();
+    shim = '';
 };
 
 exports.unload = function() {
