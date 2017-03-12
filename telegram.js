@@ -5,8 +5,6 @@ bot,
 api,
 shim;
 
-var sendMessage = function(message, thread, opts) {
-};
 
 exports.getApi = function() {
     return api;
