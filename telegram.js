@@ -1,6 +1,7 @@
 "use strict";
 
 var bot = null,
+    shim,
     api = null,
     offset = null,
     TelegramBot = require('tgfancy'),
