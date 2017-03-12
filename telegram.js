@@ -1,3 +1,5 @@
+"use strict";
+
 var bot = null,
     api = null,
     offset = null,
